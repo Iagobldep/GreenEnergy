@@ -1,4 +1,3 @@
-
 CREATE DATABASE greenenergy;
 USE greenenergy;
 
