@@ -1,10 +1,11 @@
 info:
   name: delete-clientes
   type: http
+  seq: 1
 
 http:
   method: DELETE
-  url: ""
+  url: http://localhost:3000/clientes
   auth: inherit
 
 settings:
@@ -12,4 +13,3 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
-​
