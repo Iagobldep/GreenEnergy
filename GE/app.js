@@ -6,6 +6,7 @@ import conexao from './db.js';
 import clientesRoutes from './src/routes/clientesRoutes.js';
 import categoriasRoutes from './src/routes/categoriasRoutes.js';
 import produtosRoutes from './src/routes/produtosRoutes.js';
+import carrinhoRoutes from './src/routes/carrinhoRoutes.js';
 import { tratarErro } from './src/middlewares/tratarErro.js';
 
 dotenv.config();
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 app.use("/clientes", clientesRoutes);
 app.use("/categorias", categoriasRoutes);
 app.use("/produtos", produtosRoutes);
+app.use("/carrinhos", carrinhoRoutes);
 
 app.use(tratarErro);
 

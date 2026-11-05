@@ -21,15 +21,6 @@ export function buscarPorId(req, res, next) {
 export function criar(req, res, next) {
     const { nome, email, senha, endereco, telefone } = req.body ?? {};
 
-    // if (!textoValido(nome, 150) ||
-    //     !textoValido(email, 150) ||
-    //     !textoValido(senha, 255) ||
-    //     !textoValido(endereco, 255) ||
-    //     !textoValido(telefone, 20)
-    // ) {
-    //     return res.status(400).json({ msg: "Insira nome, email, senha, endereco e telefone válidos para todos os campos" })
-    // }
-
     const dados = { nome: nome.trim(), email: email, senha: senha.trim(), endereco: endereco.trim(), telefone: telefone.trim() };
 
     clientesModel.criar(dados, (erro, resultado) => {
