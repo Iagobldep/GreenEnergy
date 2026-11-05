@@ -6,6 +6,7 @@ const router = Router();
 
 router.get("/", categoriasController.listar);
 router.get("/:id", validarId, categoriasController.buscarPorId);
+router.get("/produtos/:id", validarId, categoriasController.buscarProdutosPorCategoria);
 router.post("/", categoriasController.criar);
 router.put("/:id", validarId, categoriasController.atualizar);
 router.delete("/:id", validarId, categoriasController.deletar);

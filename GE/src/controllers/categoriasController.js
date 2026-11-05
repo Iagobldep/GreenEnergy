@@ -18,6 +18,16 @@ export function buscarPorId(req, res, next) {
     });
 }
 
+export function buscarProdutosPorCategoria(req, res, next) {
+    categoriasModel.buscarProdutosPorCategoria(req.id, (erro, resultado) => {
+        if (erro) return next(erro);
+        if (resultado.length === 0) {
+            return res.status(404).json({ msg: "Categoria não encontrada" });
+        }
+        return res.status(200).json(resultado);
+    });
+}
+
 export function criar(req, res, next) {
     const { nome } = req.body ?? {};
 

@@ -1,0 +1,25 @@
+info:
+  name: put-produtos
+  type: http
+  seq: 11
+
+http:
+  method: PUT
+  url: http://localhost:3000/produtos/2
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "lego minecraft",
+        "descricao": "é legal aaaaaaaaaaaaaaaaaaaaa",
+        "preco": 929.99,
+        "estoque": 200,
+        "id_categoria": 2
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

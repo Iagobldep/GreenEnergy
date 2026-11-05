@@ -9,3 +9,9 @@ export function inteiroPositivo(valor) {
         && Number.isSafeInteger(valor)
         && valor > 0;
 }
+
+export function precoValido(valor) {
+    return typeof valor === "number"
+        && Number.isFinite(valor)
+        && valor > 0;
+}

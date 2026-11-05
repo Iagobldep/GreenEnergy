@@ -10,6 +10,11 @@ export function buscarPorId (id, callback) {
     conexao.query(sql, [id], callback);
 }
 
+export function buscarProdutosPorCategoria (id, callback) {
+    const sql = "SELECT * FROM produto WHERE id_categoria = ?";
+    conexao.query(sql, [id], callback);
+}
+
 export function criar (dados, callback) {
     const sql = "INSERT INTO categoria (nome) VALUES (?)";
     conexao.query(sql, [dados.nome], callback);
