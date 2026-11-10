@@ -22,7 +22,7 @@ export function buscarPorId(req, res, next) {
     });
 }
 
-export function criar(req, res, next) {
+export async function criar(req, res, next) {
     const { nome, email, senha, endereco, telefone } = req.body ?? {};
 
     if (!textoValido(nome, 150) ||
@@ -34,7 +34,8 @@ export function criar(req, res, next) {
         return res.status(400).json({ msg: "Insira nome, email, senha, endereco e telefone válidos" });
     }
 
-    hashSenha(senha).then((senhaHash) => {
+    try {
+        const senhaHash = await hashSenha(senha);
         const dados = {
             nome: nome.trim(),
             email: email.trim().toLowerCase(),
@@ -50,7 +51,9 @@ export function criar(req, res, next) {
                 id: resultado.insertId,
             });
         });
-    }).catch(next);
+    } catch (erro) {
+        return next(erro);
+    }
 }
 
 export function login(req, res, next) {
@@ -104,7 +107,7 @@ export function login(req, res, next) {
     });
 }
 
-export function atualizar(req, res, next) {
+export async function atualizar(req, res, next) {
     const { nome, email, senha, endereco, telefone } = req.body ?? {};
 
     if (!textoValido(nome, 150) ||
@@ -116,13 +119,14 @@ export function atualizar(req, res, next) {
         return res.status(400).json({ msg: "Insira nome, email, senha, endereco e telefone válidos para todos os campos" })
     }
 
-    hashSenha(senha).then((senhaHash) => {
+    try {
+        const senhaHash = await hashSenha(senha);
         const dados = {
-        nome: nome.trim(),
-        email: email.trim().toLowerCase(),
-        senha: senhaHash,
-        endereco: endereco.trim(),
-        telefone: telefone.trim()
+            nome: nome.trim(),
+            email: email.trim().toLowerCase(),
+            senha: senhaHash,
+            endereco: endereco.trim(),
+            telefone: telefone.trim()
         };
 
         clientesModel.atualizar(req.id, dados, (erro, resultado) => {
@@ -133,7 +137,9 @@ export function atualizar(req, res, next) {
             }
             return res.status(404).json({ msg: "Cliente não encontrado" });
         });
-    }).catch(next);
+    } catch (erro) {
+        return next(erro);
+    }
 }
 
 export function deletar(req, res, next) {
