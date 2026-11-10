@@ -10,14 +10,14 @@ export function buscarPorId (id, callback) {
     conexao.query(sql, [id], callback);
 }
 
-export function criar (dados, callback) {
+export function criar (idCliente, callback) {
     const sql = "INSERT INTO carrinho (id_cliente) VALUES (?)";
-    conexao.query(sql, [dados.id_cliente], callback);
+    conexao.query(sql, [idCliente], callback);
 }
 
-export function atualizar (id, dados, callback) {
+export function atualizar (id, idCliente, callback) {
     const sql = "UPDATE carrinho SET id_cliente = ? WHERE id = ?";
-    conexao.query(sql, [dados.id_cliente, id], callback);
+    conexao.query(sql, [idCliente, id], callback);
 }
 
 export function deletar (id, callback) {

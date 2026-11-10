@@ -6,11 +6,11 @@ export function tratarErro(erro, req, res, next) {
     }
 
     if (erro.code === "ER_DUP_ENTRY" || erro.errno === 1062) {
-        return res.status(409).json({ erro: "Este email já está em uso" });
+        return res.status(409).json({ erro: "Já existe um registro com esse valor em um campo único" });
     }
 
     if (erro.code === "ER_NO_REFERENCED_ROW_2" || erro.errno === 1452) {
-        return res.status(400).json({ erro: "O estudio informado não existe" });
+        return res.status(400).json({ erro: "Um dos registros relacionados informados não existe" });
     }
 
     if (erro.code === "ER_ROW_IS_REFERENCED_2" || erro.errno === 1451) {

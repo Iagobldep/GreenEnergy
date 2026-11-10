@@ -1,0 +1,23 @@
+info:
+  name: post-compras
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:3000/compras
+  body:
+    type: json
+    data: |-
+      {
+        "id_cliente": 1,
+        "valor_total": 199.90,
+        "estado": "pendente"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

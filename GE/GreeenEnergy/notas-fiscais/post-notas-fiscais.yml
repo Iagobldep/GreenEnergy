@@ -1,0 +1,23 @@
+info:
+  name: post-notas-fiscais
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:3000/notas-fiscais
+  body:
+    type: json
+    data: |-
+      {
+        "id_compra": 1,
+        "valor_total": 199.90,
+        "estado": "emitida"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -5,7 +5,13 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:3000/carrinho/1
+  url: http://localhost:3000/carrinhos/1
+  body:
+    type: json
+    data: |-
+      {
+        "id_cliente": 1
+      }
   auth: inherit
 
 settings:

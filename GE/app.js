@@ -7,6 +7,10 @@ import clientesRoutes from './src/routes/clientesRoutes.js';
 import categoriasRoutes from './src/routes/categoriasRoutes.js';
 import produtosRoutes from './src/routes/produtosRoutes.js';
 import carrinhoRoutes from './src/routes/carrinhoRoutes.js';
+import itensCarrinhoRoutes from './src/routes/itensCarrinhoRoutes.js';
+import comprasRoutes from './src/routes/comprasRoutes.js';
+import itensCompraRoutes from './src/routes/itensCompraRoutes.js';
+import notasFiscaisRoutes from './src/routes/notasFiscaisRoutes.js';
 import { tratarErro } from './src/middlewares/tratarErro.js';
 
 dotenv.config();
@@ -30,6 +34,10 @@ app.use("/clientes", clientesRoutes);
 app.use("/categorias", categoriasRoutes);
 app.use("/produtos", produtosRoutes);
 app.use("/carrinhos", carrinhoRoutes);
+app.use("/itens-carrinho", itensCarrinhoRoutes);
+app.use("/compras", comprasRoutes);
+app.use("/itens-compra", itensCompraRoutes);
+app.use("/notas-fiscais", notasFiscaisRoutes);
 
 app.use(tratarErro);
 

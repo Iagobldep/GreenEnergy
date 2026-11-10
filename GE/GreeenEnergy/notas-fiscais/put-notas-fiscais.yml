@@ -1,0 +1,24 @@
+info:
+  name: put-notas-fiscais
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: http://localhost:3000/notas-fiscais/1
+  body:
+    type: json
+    data: |-
+      {
+        "id_compra": 1,
+        "data_emissao": "2026-11-10 08:00:00",
+        "valor_total": 199.90,
+        "estado": "emitida"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

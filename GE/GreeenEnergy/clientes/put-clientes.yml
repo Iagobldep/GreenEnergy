@@ -5,7 +5,7 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:3000/clientes/6
+  url: http://localhost:3000/clientes/1
   body:
     type: json
     data: |-
