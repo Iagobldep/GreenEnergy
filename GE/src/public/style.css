@@ -5,15 +5,15 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #95BB72;
-    color: #75965D;
+    background-color: #ABCA91;
+    color: #4A5E42;
     min-height: 100hv;
     display: flex;
     flex-direction: column;
 }
 
 header {
-    background-color: #C7DDB6;
+    background-color: #668255;
     color: white;
     padding: 20px 8%;
     display: flex;
@@ -37,6 +37,11 @@ nav a {
     transition: 0.3s;
 }
 
+nav a:hover,
+nav a.ativo {
+    color: #668255;
+}
+
 .botao {
     display: inline-block;
     background-color: #4B5F43;
@@ -53,7 +58,7 @@ nav a {
 
 footer {
     margin: auto;
-    background-color: #4B5F43;
+    background-color: #ABCA91;
     color: white;
     text-align: center;
     padding: 20px;
@@ -66,5 +71,7 @@ footer {
     
 nav {
     gap: 15px;
+    }
+
     }
 }
