@@ -1,49 +1,5 @@
 import conexao from "../../db.js";
 
-function erroDaRegra(status, message) {
-    const erro = new Error(message);
-    erro.status = status;
-    return erro;
-}
-
-function validarDisponibilidade(idCarrinho, idProduto, quantidade, idItem, callback) {
-    conexao.query("SELECT id FROM carrinho WHERE id = ?", [idCarrinho], (erro, carrinhos) => {
-        if (erro) return callback(erro);
-        if (carrinhos.length === 0) {
-            return callback(erroDaRegra(404, "Carrinho não encontrado"));
-        }
-
-        conexao.query("SELECT id, nome, estoque FROM produto WHERE id = ?", [idProduto], (erroProduto, produtos) => {
-            if (erroProduto) return callback(erroProduto);
-            if (produtos.length === 0) {
-                return callback(erroDaRegra(404, "Produto não encontrado"));
-            }
-
-            const produto = produtos[0];
-            const params = [idCarrinho, idProduto];
-            let sql = "SELECT id, quantidade FROM item_carrinho WHERE id_carrinho = ? AND id_produto = ?";
-            if (idItem !== undefined) {
-                sql += " AND id <> ?";
-                params.push(idItem);
-            }
-
-            conexao.query(sql, params, (erroItens, itens) => {
-                if (erroItens) return callback(erroItens);
-
-                const quantidadeExistente = itens.reduce((total, item) => total + Number(item.quantidade), 0);
-                if (quantidadeExistente + quantidade > Number(produto.estoque)) {
-                    return callback(erroDaRegra(
-                        409,
-                        `Estoque insuficiente para ${produto.nome}. Disponível: ${Math.max(0, Number(produto.estoque) - quantidadeExistente)}`
-                    ));
-                }
-
-                callback(null, { itens, produto });
-            });
-        });
-    });
-}
-
 export function listar(callback) {
     const sql = `
         SELECT item_carrinho.id, item_carrinho.id_carrinho, item_carrinho.id_produto,

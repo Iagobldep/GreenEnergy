@@ -16,6 +16,27 @@ export function buscarPorId(req, res, next) {
     });
 }
 
+export function finalizar(req, res, next) {
+    const { id_cliente } = req.body ?? {};
+    if (!inteiroPositivo(id_cliente)) {
+        return res.status(400).json({ msg: "Informe um id_cliente inteiro positivo" });
+    }
+
+    comprasModel.finalizar(id_cliente, (erro, compra) => {
+        if (erro) {
+            if (Number.isInteger(erro.status) && erro.status >= 400 && erro.status < 500) {
+                return res.status(erro.status).json({ msg: erro.message });
+            }
+            return next(erro);
+        }
+
+        return res.status(201).json({
+            msg: "Compra finalizada com sucesso",
+            compra
+        });
+    });
+}
+
 export function buscarItensDeCompra(req, res, next) {
     comprasModel.buscarItensDeCompra(req.id, (erro, resultado) => {
         if (erro) return next(erro);
