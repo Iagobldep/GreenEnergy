@@ -1,0 +1,15 @@
+info:
+  name: delete-produtos
+  type: http
+  seq: 14
+
+http:
+  method: DELETE
+  url: http://localhost:3000/produtos/1
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

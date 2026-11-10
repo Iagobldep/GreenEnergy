@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: http://localhost:3000/clientes/12
+  url: http://localhost:3000/clientes/15
   auth: inherit
 
 settings:
