@@ -55,10 +55,16 @@ footer {
     margin: auto;
     background-color: #4B5F43;
     color: white;
-    text-align: center
+    text-align: center;
     padding: 20px;
 }
 
-@media screen {
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    
+nav {
     gap: 15px;
+    }
 }
