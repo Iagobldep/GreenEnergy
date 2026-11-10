@@ -5,6 +5,7 @@ import { validarId } from "../middlewares/validarId.js";
 const router = Router();
 
 router.get("/", itensCarrinhoController.listar);
+router.get("/carrinho/:id", validarId, itensCarrinhoController.listarPorCarrinho);
 router.get("/:id", validarId, itensCarrinhoController.buscarPorId);
 router.post("/", itensCarrinhoController.criar);
 router.put("/:id", validarId, itensCarrinhoController.atualizar);

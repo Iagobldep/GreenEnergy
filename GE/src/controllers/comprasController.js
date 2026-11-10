@@ -16,6 +16,13 @@ export function buscarPorId(req, res, next) {
     });
 }
 
+export function buscarItensDeCompra(req, res, next) {
+    comprasModel.buscarItensDeCompra(req.id, (erro, resultado) => {
+        if (erro) return next(erro);
+        return res.status(200).json(resultado);
+    });
+}
+
 export function criar(req, res, next) {
     const { id_cliente, data_compra, valor_total, estado } = req.body ?? {};
     if (!inteiroPositivo(id_cliente) ||

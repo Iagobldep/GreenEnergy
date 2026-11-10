@@ -1,18 +1,28 @@
 import conexao from "../../db.js";
 
 export function listar (callback) {
-    const sql = "SELECT * FROM cliente";
+    const sql = "SELECT id, nome, email, endereco, telefone FROM cliente";
     conexao.query(sql, callback);
 }
 
 export function buscarPorId (id, callback) {
-    const sql = "SELECT * FROM cliente WHERE id = ?";
+    const sql = "SELECT id, nome, email, endereco, telefone FROM cliente WHERE id = ?";
     conexao.query(sql, [id], callback);
+}
+
+export function buscarPorEmail (email, callback) {
+    const sql = "SELECT id, nome, email, senha, endereco, telefone FROM cliente WHERE email = ?";
+    conexao.query(sql, [email], callback);
 }
 
 export function criar (dados, callback) {
     const sql = "INSERT INTO cliente (nome, email, senha, endereco, telefone) VALUES (?, ?, ?, ?, ?)";
     conexao.query(sql, [dados.nome, dados.email, dados.senha, dados.endereco, dados.telefone], callback);
+}
+
+export function atualizarSenha (id, senha, callback) {
+    const sql = "UPDATE cliente SET senha = ? WHERE id = ?";
+    conexao.query(sql, [senha, id], callback);
 }
 
 export function atualizar (id, dados, callback) {

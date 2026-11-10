@@ -1,0 +1,15 @@
+info:
+  name: get-produto
+  type: http
+  seq: 11
+
+http:
+  method: GET
+  url: http://localhost:3000/produtos/1
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -5,6 +5,7 @@ import { validarId } from "../middlewares/validarId.js";
 const router = Router();
 
 router.get("/", clientesController.listar);
+router.post("/login", clientesController.login);
 router.get("/:id", validarId, clientesController.buscarPorId);
 router.post("/", clientesController.criar);
 router.put("/:id", validarId, clientesController.atualizar);
