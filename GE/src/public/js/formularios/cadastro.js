@@ -1,58 +1,53 @@
 const formulario = document.querySelector("#formCadastro");
+const nome = document.querySelector("#nome");
+const email = document.querySelector("#email");
 const senha = document.querySelector("#senha");
-const confirmarSenha = document.querySelector("#confirmarSenha");
+const endereco = document.querySelector("#endereco");
+const telefone = document.querySelector("#telefone");
 const mensagem = document.querySelector("#mensagemCadastro");
-
-function conferirSenhas() {
-    confirmarSenha.setCustomValidity(
-        senha.value === confirmarSenha.value ? "" : "As senhas não coincidem."
-    );
-}
-
-senha.addEventListener("input", conferirSenhas);
-confirmarSenha.addEventListener("input", conferirSenhas);
 
 formulario.addEventListener("submit", async (evento) => {
     evento.preventDefault();
-    conferirSenhas();
-
-    if (!formulario.reportValidity()) {
-        return;
-    }
 
     const dados = {
-        nome: formulario.elements.nome.value.trim(),
-        email: formulario.elements.email.value.trim(),
+        nome: nome.value.trim(),
+        email: email.value.trim(),
         senha: senha.value,
-        endereco: formulario.elements.endereco.value.trim(),
-        telefone: formulario.elements.telefone.value.trim(),
+        endereco: endereco.value.trim(),
+        telefone: telefone.value.trim()
     };
 
-    mensagem.textContent = "Enviando cadastro...";
+    mensagem.textContent = "Cadastrando...";
     mensagem.className = "";
 
     try {
         const resposta = await fetch("http://localhost:3000/clientes", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify(dados),
+            body: JSON.stringify(dados)
         });
+
         const resultado = await resposta.json();
 
         if (!resposta.ok) {
-            mensagem.textContent = resultado.msg || "Não foi possível realizar o cadastro.";
+            mensagem.textContent = resultado.msg || "Erro ao cadastrar.";
             mensagem.className = "erro";
             return;
         }
 
-        mensagem.textContent = resultado.msg || "Cadastro realizado com sucesso!";
+        mensagem.textContent = "Cadastro realizado com sucesso!";
         mensagem.className = "sucesso";
+
         formulario.reset();
+
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1500);
+
     } catch (erro) {
-        console.error("Erro ao enviar cadastro:", erro);
-        mensagem.textContent = "Não foi possível conectar à API. Verifique se o servidor está rodando.";
+        mensagem.textContent = "Não foi possível conectar à API.";
         mensagem.className = "erro";
     }
 });

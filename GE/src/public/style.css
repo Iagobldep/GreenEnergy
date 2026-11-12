@@ -309,3 +309,25 @@ body {
         font-size: 12px;
     }
 }
+.nav-links .btn-login {
+    border: 1px solid #c5dfa5;
+    padding: 10px 20px;
+    border-radius: 7px;
+    color: white;
+}
+
+.nav-links .btn-cadastro {
+    background: #c5dfa5;
+    color: #36543b;
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.nav-links .btn-login:hover {
+    background: #64864e;
+}
+
+.nav-links .btn-cadastro:hover {
+    background: #a8c989;
+}

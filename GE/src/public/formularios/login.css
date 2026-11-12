@@ -1,0 +1,138 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f7ef;
+    color: #344b35;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background:
+        linear-gradient(rgba(27, 53, 32, 0.65), rgba(27, 53, 32, 0.65)),
+        url("https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1600")
+        center/cover;
+}
+
+.login-card {
+    background: white;
+    width: 100%;
+    max-width: 430px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px #0002;
+}
+
+.logo {
+    display: block;
+    text-align: center;
+    color: #36543b;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+
+.login-card h1 {
+    text-align: center;
+    font-size: 27px;
+    margin-bottom: 10px;
+    color: #36543b;
+}
+
+.descricao {
+    text-align: center;
+    color: #829080;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dce4d7;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+}
+
+.campo input:focus {
+    border-color: #64864e;
+    box-shadow: 0 0 0 3px #64864e20;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #36543b;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #64864e;
+}
+
+#mensagemLogin {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.cadastro {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 25px;
+    color: #778274;
+}
+
+.cadastro a {
+    color: #567747;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.voltar {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #829080;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 22px;
+    }
+
+    .login-card h1 {
+        font-size: 23px;
+    }
+}
