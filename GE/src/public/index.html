@@ -1,120 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 
-<header class="header">
-    <nav class="navbar">
-        <a href="index.html" class="logo">🌿 Green Energy</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenEnergy</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="js/paginas/index.js"></script>
+</head>
 
-        <div class="nav-links">
-            <a href="index.html" class="active">Início</a>
-            <a href="catalogo.html">Catálogo</a>
-        </div>
-    </nav>
-</header>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">🌿 Green Energy</a>
 
-<main>
-    
-    <section class="hero">
-        <div class="hero-content">
-            <span class="tagline">🌱 Um futuro mais sustentável</span>
+            <div class="nav-links">
+                <a href="index.html" class="active">Início</a>
+                <a href="catalogo.html">Catálogo</a>
+            </div>
+        </nav>
+    </header>
 
-            <h1>Pequenas escolhas,<br>
-                grandes mudanças.</h1>
+    <main>
 
+        <section class="hero">
+            <div class="hero-content">
+                <span class="tagline">🌱 Um futuro mais sustentável</span>
+
+                <h1>Pequenas escolhas,<br>
+                    grandes mudanças.</h1>
+
+                <p>
+                    Descubra produtos sustentáveis que fazem
+                    a diferença para você e para o planeta.
+                </p>
+
+                <a href="catalogo.html" class="hero-button">
+                    Explorar catálogo →
+                </a>
+            </div>
+        </section>
+
+        <section class="intro">
+            <span>ESCOLHAS CONSCIENTES</span>
+            <h2>Conheça nossa coleção</h2>
             <p>
-                Descubra produtos sustentáveis que fazem
-                a diferença para você e para o planeta.
+                Produtos pensados para um estilo de vida
+                mais ecológico e sustentável.
             </p>
+        </section>
 
-            <a href="catalogo.html" class="hero-button">
-                Explorar catálogo →
-            </a>
-        </div>
-    </section>
+        <section class="carousel-section">
+            <div class="section-heading">
+                <div>
+                    <span>DESTAQUES</span>
+                    <h2>Produtos em destaque</h2>
+                </div>
 
-    <section class="intro">
-        <span>ESCOLHAS CONSCIENTES</span>
-        <h2>Conheça nossa coleção</h2>
-        <p>
-            Produtos pensados para um estilo de vida
-            mais ecológico e sustentável.
-        </p>
-    </section>
-
-    <section class="carousel-section">
-        <div class="section-heading">
-            <div>
-                <span>DESTAQUES</span>
-                <h2>Produtos em destaque</h2>
+                <a href="catalogo.html">Ver todos →</a>
             </div>
 
-            <a href="catalogo.html">Ver todos →</a>
-        </div>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="moverCarrossel(-1)" aria-label="Produtos anteriores">
+                    &#10094;
+                </button>
 
-        <div class="carousel-container">
-            <button class="carousel-btn prev"
-                onclick="moverCarrossel(-1)"
-                aria-label="Produtos anteriores">
-                &#10094;
-            </button>
+                <div class="carousel" id="carousel">
 
-            <div class="carousel" id="carousel">
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600"
+                            alt="Garrafa reutilizável">
+                        <div class="product-info">
+                            <span>REUTILIZÁVEIS</span>
+                            <h3>Garrafa ecológica</h3>
+                            <p>Uma alternativa sustentável para o dia a dia.</p>
+                            <a href="catalogo.html">Conhecer produto →</a>
+                        </div>
+                    </article>
 
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600"
-                        alt="Garrafa reutilizável">
-                    <div class="product-info">
-                        <span>REUTILIZÁVEIS</span>
-                        <h3>Garrafa ecológica</h3>
-                        <p>Uma alternativa sustentável para o dia a dia.</p>
-                        <a href="catalogo.html">Conhecer produto →</a>
-                    </div>
-                </article>
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600"
+                            alt="Caderno sustentável">
+                        <div class="product-info">
+                            <span>PAPELARIA</span>
+                            <h3>Caderno sustentável</h3>
+                            <p>Ideal para organizar suas ideias.</p>
+                            <a href="catalogo.html">Conhecer produto →</a>
+                        </div>
+                    </article>
 
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600"
-                        alt="Caderno sustentável">
-                    <div class="product-info">
-                        <span>PAPELARIA</span>
-                        <h3>Caderno sustentável</h3>
-                        <p>Ideal para organizar suas ideias.</p>
-                        <a href="catalogo.html">Conhecer produto →</a>
-                    </div>
-                </article>
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600"
+                            alt="Produtos naturais">
+                        <div class="product-info">
+                            <span>CUIDADOS</span>
+                            <h3>Kit natural</h3>
+                            <p>Cuidados com você e com o meio ambiente.</p>
+                            <a href="catalogo.html">Conhecer produto →</a>
+                        </div>
+                    </article>
 
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600"
-                        alt="Produtos naturais">
-                    <div class="product-info">
-                        <span>CUIDADOS</span>
-                        <h3>Kit natural</h3>
-                        <p>Cuidados com você e com o meio ambiente.</p>
-                        <a href="catalogo.html">Conhecer produto →</a>
-                    </div>
-                </article>
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600"
+                            alt="Planta decorativa">
+                        <div class="product-info">
+                            <span>NATUREZA</span>
+                            <h3>Plantas decorativas</h3>
+                            <p>Mais natureza para o seu ambiente.</p>
+                            <a href="catalogo.html">Conhecer produto →</a>
+                        </div>
+                    </article>
 
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600"
-                        alt="Planta decorativa">
-                    <div class="product-info">
-                        <span>NATUREZA</span>
-                        <h3>Plantas decorativas</h3>
-                        <p>Mais natureza para o seu ambiente.</p>
-                        <a href="catalogo.html">Conhecer produto →</a>
-                    </div>
-                </article>
+                </div>
 
+                <button class="carousel-btn next" onclick="moverCarrossel(1)" aria-label="Próximos produtos">
+                    &#10095;
+                </button>
             </div>
+        </section>
 
-            <button class="carousel-btn next"
-                onclick="moverCarrossel(1)"
-                aria-label="Próximos produtos">
-                &#10095;
-            </button>
-        </div>
-    </section>
+        <footer class="footer">
+            <h2>🌿 Green Energy</h2>
+            <p>Consumo consciente, futuro sustentável.</p>
+            <small>© 2026 Green Energy. Todos os direitos reservados.</small>
+        </footer>
+    </main>
+</body>
 
-    <footer class="footer">
-        <h2>🌿 Green Energy</h2>
-        <p>Consumo consciente, futuro sustentável.</p>
-        <small>© 2026 Green Energy. Todos os direitos reservados.</small>
-    </footer>
-</main>
+</html>
