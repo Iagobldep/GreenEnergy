@@ -61,59 +61,15 @@
             </div>
 
             <div class="carousel-container">
-                <button class="carousel-btn prev" onclick="moverCarrossel(-1)" aria-label="Produtos anteriores">
+                <button class="carousel-btn prev" id="produtos-anteriores" aria-label="Produtos anteriores">
                     &#10094;
                 </button>
 
-                <div class="carousel" id="carousel">
-
-                    <article class="product-card">
-                        <img src="https://www.galaxcms.com.br/imgs_crud_comum/2906/Painel-Solar-20200514010802.jpg"
-                            alt="Painéis sustentáveis">
-                        <div class="product-info">
-                            <span>REUTILIZÁVEIS</span>
-                            <h3>Painéis solares</h3>
-                            <p>Uma alternativa sustentável para o dia a dia.</p>
-                            <a href="catalogo.html">Conhecer produto →</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600"
-                            alt="Caderno sustentável">
-                        <div class="product-info">
-                            <span>PAPELARIA</span>
-                            <h3>Caderno sustentável</h3>
-                            <p>Ideal para organizar suas ideias.</p>
-                            <a href="catalogo.html">Conhecer produto →</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600"
-                            alt="Produtos naturais">
-                        <div class="product-info">
-                            <span>CUIDADOS</span>
-                            <h3>Kit natural</h3>
-                            <p>Cuidados com você e com o meio ambiente.</p>
-                            <a href="catalogo.html">Conhecer produto →</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600"
-                            alt="Planta decorativa">
-                        <div class="product-info">
-                            <span>NATUREZA</span>
-                            <h3>Plantas decorativas</h3>
-                            <p>Mais natureza para o seu ambiente.</p>
-                            <a href="catalogo.html">Conhecer produto →</a>
-                        </div>
-                    </article>
-
+                <div class="carousel" id="carousel" aria-live="polite">
+                    <p id="mensagemProdutos">Carregando produtos...</p>
                 </div>
 
-                <button class="carousel-btn next" onclick="moverCarrossel(1)" aria-label="Próximos produtos">
+                <button class="carousel-btn next" id="proximos-produtos" aria-label="Próximos produtos">
                     &#10095;
                 </button>
             </div>
