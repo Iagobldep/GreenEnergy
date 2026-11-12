@@ -101,7 +101,7 @@ main > h1 {
 }
 
 .lista-produtos article > img,
-.imagem-placeholder {
+.product-visual {
     width: calc(100% + 44px);
     height: 180px;
     margin: -22px -22px 18px;
@@ -113,7 +113,7 @@ main > h1 {
     object-fit: cover;
 }
 
-.imagem-placeholder {
+.product-visual {
     display: grid;
     place-items: center;
     background: linear-gradient(135deg, #dce9cf, #edf3e6);

@@ -18,7 +18,17 @@ function criarCard(produto) {
         currency: 'BRL'
     });
 
-    card.append(nome, descricao, preco);
+    let visual = document.createElement('div');
+    visual.className = 'product-visual';
+    visual.textContent = '🌿';
+
+    if (produto.imagem_url) {
+        visual = document.createElement('img');
+        visual.src = produto.imagem_url;
+        visual.alt = produto.nome;
+    }
+
+    card.append(visual, nome, descricao, preco);
     return card;
 }
 
