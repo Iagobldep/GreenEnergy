@@ -1,0 +1,26 @@
+info:
+  name: put-produtos
+  type: http
+  seq: 13
+
+http:
+  method: PUT
+  url: http://localhost:3000/produtos/2
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Lâmpada LED",
+        "descricao": "Ideal para iluminar suas ideias",
+        "imagem_url": "https://cdn.awsli.com.br/800x800/957/957734/produto/38326962/f68849628d.jpg",
+        "preco": 13.00,
+        "estoque": 30,
+        "id_categoria": 2
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

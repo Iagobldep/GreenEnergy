@@ -186,6 +186,15 @@ body {
     object-fit: cover;
 }
 
+.product-visual {
+    height: 150px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #dce9cf, #edf3e6);
+    color: #567747;
+    font-size: 56px;
+}
+
 .product-info {
     padding: 20px;
 }
@@ -210,11 +219,17 @@ body {
     margin-bottom: 15px;
 }
 
-.product-info a {
-    color: #64864e;
-    text-decoration: none;
-    font-size: 14px;
+.product-price {
+    display: block;
+    color: #36543b;
+    font-size: 18px;
     font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.product-stock {
+    color: #7b8377;
+    font-size: 13px;
 }
 
 .carousel-btn {

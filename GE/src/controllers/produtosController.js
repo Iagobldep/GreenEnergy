@@ -21,7 +21,7 @@ export function buscarPorId(req, res, next) {
 }
 
 export function criar(req, res, next) {
-    const { nome, descricao, preco, estoque, id_categoria } = req.body ?? {};
+    const { nome, descricao, imagem_url, preco, estoque, id_categoria } = req.body ?? {};
 
     if (!textoValido(nome, 255) ||
         !descricao ||
@@ -32,7 +32,7 @@ export function criar(req, res, next) {
         return res.status(400).json({ msg: "Insira nome, descricao, preco, estoque e id_categoria válidos para todos os campos" })
     }
     
-    const dados = { nome: nome.trim(), descricao: descricao.trim(), preco: preco, estoque: estoque, id_categoria: id_categoria };
+    const dados = { nome: nome.trim(), descricao: descricao.trim(), imagem_url: imagem_url?.trim() || null, preco: preco, estoque: estoque, id_categoria: id_categoria };
 
     produtosModel.criar(dados, (erro, resultado) => {
         if (erro) return next(erro);
