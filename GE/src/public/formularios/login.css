@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
+    color: #36543b;
     background: #f5f7ef;
-    color: #344b35;
 }
 
 .container {
@@ -18,7 +18,7 @@ body {
     justify-content: center;
     padding: 25px;
     background:
-        linear-gradient(rgba(27, 53, 32, 0.65), rgba(27, 53, 32, 0.65)),
+        linear-gradient(#1b3520a6, #1b3520a6),
         url("https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1600")
         center/cover;
 }
@@ -29,24 +29,23 @@ body {
     max-width: 430px;
     padding: 40px;
     border-radius: 16px;
-    box-shadow: 0 10px 35px #0002;
+    box-shadow: 0 10px 35px #0003;
 }
 
 .logo {
     display: block;
     text-align: center;
-    color: #36543b;
-    font-size: 25px;
+    font-size: 26px;
     font-weight: bold;
+    color: #36543b;
     text-decoration: none;
     margin-bottom: 30px;
 }
 
-.login-card h1 {
+h1 {
     text-align: center;
-    font-size: 27px;
+    font-size: 26px;
     margin-bottom: 10px;
-    color: #36543b;
 }
 
 .descricao {
@@ -63,23 +62,21 @@ body {
 
 .campo label {
     display: block;
-    font-weight: 600;
+    font-weight: bold;
     margin-bottom: 8px;
-    font-size: 14px;
 }
 
 .campo input {
     width: 100%;
     padding: 13px;
     border: 1px solid #dce4d7;
-    border-radius: 7px;
+    border-radius: 8px;
     outline: none;
     font-size: 14px;
 }
 
 .campo input:focus {
     border-color: #64864e;
-    box-shadow: 0 0 0 3px #64864e20;
 }
 
 button {
@@ -88,8 +85,8 @@ button {
     background: #36543b;
     color: white;
     border: none;
-    border-radius: 7px;
-    font-size: 15px;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
@@ -99,21 +96,14 @@ button:hover {
     background: #64864e;
 }
 
-#mensagemLogin {
-    text-align: center;
-    font-size: 13px;
-    margin-bottom: 15px;
-}
-
 .cadastro {
     text-align: center;
     font-size: 14px;
     margin-top: 25px;
-    color: #778274;
 }
 
 .cadastro a {
-    color: #567747;
+    color: #64864e;
     font-weight: bold;
     text-decoration: none;
 }
@@ -127,12 +117,16 @@ button:hover {
     text-decoration: none;
 }
 
-@media (max-width: 480px) {
-    .login-card {
-        padding: 30px 22px;
-    }
+#mensagemLogin {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
 
-    .login-card h1 {
-        font-size: 23px;
-    }
+.erro {
+    color: red;
+}
+
+.sucesso {
+    color: green;
 }
