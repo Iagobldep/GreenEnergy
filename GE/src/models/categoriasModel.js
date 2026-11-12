@@ -1,7 +1,7 @@
 import conexao from "../../db.js";
 
 export function listar (callback) {
-    const sql = "SELECT * FROM categoria";
+    const sql = "SELECT * FROM categoria ORDER BY id";
     conexao.query(sql, callback);
 }
 

@@ -1,7 +1,7 @@
 import conexao from "../../db.js";
 
 export function listar (callback) {
-    const sql = "SELECT id, nome, email, endereco, telefone FROM cliente";
+    const sql = "SELECT id, nome, email, endereco, telefone FROM cliente ORDER BY id";
     conexao.query(sql, callback);
 }
 

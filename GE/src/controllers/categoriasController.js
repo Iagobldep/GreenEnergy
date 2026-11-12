@@ -37,14 +37,27 @@ export function criar(req, res, next) {
 
     const dados = { nome: nome.trim() };
 
-    categoriasModel.criar(dados, (erro, resultado) => {
+    categoriasModel.listar((erro, categorias) => {
         if (erro) return next(erro);
 
-        res.status(201).json({
-            msg: "Categoria cadastrada com sucesso",
-            id: resultado.insertId
+        const nomeNormalizado = dados.nome.toLowerCase();
+        const categoriaExiste = categorias.some(
+            categoria => categoria.nome.trim().toLowerCase() === nomeNormalizado
+        );
+
+        if (categoriaExiste) {
+            return res.status(409).json({ msg: "Já existe uma categoria com esse nome" });
+        }
+
+        categoriasModel.criar(dados, (erroCriacao, resultado) => {
+            if (erroCriacao) return next(erroCriacao);
+
+            return res.status(201).json({
+                msg: "Categoria cadastrada com sucesso",
+                id: resultado.insertId
+            });
         });
-    })
+    });
 }
 
 export function atualizar(req, res, next) {

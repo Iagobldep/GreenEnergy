@@ -19,7 +19,6 @@ function criarCardProduto(produto) {
         visual = document.createElement("img");
         visual.src = produto.imagem_url;
         visual.alt = produto.nome;
-        visual.loading = "lazy";
     } else {
         visual = document.createElement("div");
         visual.className = "product-visual";
