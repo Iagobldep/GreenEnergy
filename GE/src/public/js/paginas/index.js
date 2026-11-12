@@ -13,17 +13,19 @@ function criarCardProduto(produto) {
     const card = document.createElement("article");
     card.className = "product-card";
 
-    // Como a tabela ainda não possui uma imagem, mostra um símbolo decorativo.
-    const imagem = document.createElement("img");
-    if (!produto.imagem_url) {
-        imagem.setAttribute("aria-hidden", "true");
-        imagem.textContent = "🌿";
+    // Exibe a imagem cadastrada ou um visual decorativo quando não há URL.
+    let visual;
+    if (produto.imagem_url) {
+        visual = document.createElement("img");
+        visual.src = produto.imagem_url;
+        visual.alt = produto.nome;
+        visual.loading = "lazy";
     } else {
-        imagem.src = produto.imagem_url;
-        imagem.alt = produto.nome;
+        visual = document.createElement("div");
+        visual.className = "product-visual";
+        visual.setAttribute("aria-hidden", "true");
+        visual.textContent = "🌿";
     }
-    // Informa tecnologias assistivas para ignorarem este símbolo decorativo.
-    
 
     // Agrupa nome, descrição, preço e estoque.
     const informacoes = document.createElement("div");
@@ -54,7 +56,7 @@ function criarCardProduto(produto) {
     informacoes.append(titulo, descricao, preco, estoque);
 
     // Adiciona o visual e as informações no card.
-    card.append(imagem, informacoes);
+    card.append(visual, informacoes);
 
     // Devolve o card pronto para ser inserido no carrossel.
     return card;
