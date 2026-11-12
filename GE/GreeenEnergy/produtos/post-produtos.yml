@@ -12,6 +12,7 @@ http:
       {
         "nome": "Kit solar residencial",
         "descricao": "Kit para geração de energia solar residencial",
+        "imagem_url": "https://www.neosolar.com.br/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/l/o/longi-225w_1.png",
         "preco": 2499.90,
         "estoque": 10,
         "id_categoria": 1

@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS produto (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     descricao TEXT NOT NULL,
-    imagem VARCHAR(500),
+    imagem_url VARCHAR(500),
     preco DECIMAL(10,2) NOT NULL,
     estoque INT NOT NULL DEFAULT 0,
     id_categoria INT,

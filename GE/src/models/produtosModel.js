@@ -11,13 +11,13 @@ export function buscarPorId (id, callback) {
 }
 
 export function criar (dados, callback) {
-    const sql = "INSERT INTO produto (nome, descricao, preco, estoque, id_categoria) VALUES (?, ?, ?, ?, ?)";
-    conexao.query(sql, [dados.nome, dados.descricao, dados.preco, dados.estoque, dados.id_categoria], callback);
+    const sql = "INSERT INTO produto (nome, descricao, imagem_url, preco, estoque, id_categoria) VALUES (?, ?, ?, ?, ?, ?)";
+    conexao.query(sql, [dados.nome, dados.descricao, dados.imagem_url, dados.preco, dados.estoque, dados.id_categoria], callback);
 }
 
 export function atualizar (id, dados, callback) {
-    const sql = "UPDATE produto SET nome = ?, descricao = ?, preco = ?, estoque = ?, id_categoria = ? WHERE id = ?";
-    conexao.query(sql, [dados.nome, dados.descricao, dados.preco, dados.estoque, dados.id_categoria, id], callback);
+    const sql = "UPDATE produto SET nome = ?, descricao = ?, imagem_url = ?, preco = ?, estoque = ?, id_categoria = ? WHERE id = ?";
+    conexao.query(sql, [dados.nome, dados.descricao, dados.imagem_url, dados.preco, dados.estoque, dados.id_categoria, id], callback);
 }
 
 export function deletar (id, callback) {
