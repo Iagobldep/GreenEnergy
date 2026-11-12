@@ -32,6 +32,7 @@ body {
 
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 35px;
 }
 
@@ -39,12 +40,40 @@ body {
     color: #e5eddf;
     text-decoration: none;
     font-weight: 600;
+    white-space: nowrap;
     transition: 0.3s;
 }
 
 .nav-links a:hover,
 .nav-links .active {
     color: #c5dfa5;
+}
+
+.nav-links .auth-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 16px;
+    border: 1px solid #c5dfa5;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.nav-links .login-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-links .cadastro-link {
+    color: #29452e;
+    background: #c5dfa5;
+}
+
+.nav-links .cadastro-link:hover {
+    color: #29452e;
+    background: white;
+    transform: translateY(-2px);
 }
 
 .hero {
@@ -279,9 +308,32 @@ body {
     color: #c3d0bb;
 }
 
+@media (max-width: 850px) {
+    .header {
+        padding: 18px 4%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links .auth-link {
+        padding: 8px 11px;
+    }
+}
+
 @media (max-width: 600px) {
     .header {
         padding: 18px 5%;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 16px;
     }
 
     .logo {
@@ -289,8 +341,14 @@ body {
     }
 
     .nav-links {
-        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
         font-size: 13px;
+    }
+
+    .nav-links .auth-link {
+        padding: 7px 10px;
     }
 
     .hero {
