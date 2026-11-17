@@ -1,3 +1,5 @@
+import { configurarNavegacaoAutenticada } from "./navegacao.js";
+
 // Procura no HTML a área onde os cards dos produtos serão colocados.
 const carousel = document.querySelector("#carousel");
 
@@ -7,21 +9,7 @@ const mensagemProdutos = document.querySelector("#mensagemProdutos");
 // Endereço da rota da API que retorna todos os produtos cadastrados.
 const API_PRODUTOS = "http://localhost:3000/produtos";
 
-const clienteSalvo = JSON.parse(localStorage.getItem("cliente"));
-const linkLogin = document.querySelector(".login-link");
-const linkCadastro = document.querySelector(".cadastro-link");
-
-if (clienteSalvo) {
-    linkLogin.textContent = "Sair";
-    linkLogin.href = "#";
-    linkCadastro.remove();
-
-    linkLogin.addEventListener("click", (event) => {
-        event.preventDefault();
-        localStorage.removeItem("cliente");
-        window.location.reload();
-    });
-}
+const clienteSalvo = configurarNavegacaoAutenticada();
 
 // Cria e devolve um card HTML preenchido com os dados de um produto.
 function criarCardProduto(produto) {
@@ -67,11 +55,41 @@ function criarCardProduto(produto) {
     estoque.className = "product-stock";
     estoque.textContent = `Disponíveis: ${produto.estoque}`;
 
+    const adicionarProduto = document.createElement('button');
+    adicionarProduto.textContent = "Adicionar ao carrinho";
+
+    adicionarProduto.addEventListener("click", async () => {
+        if (!clienteSalvo) {
+            window.location.href = "../formularios/login.html"
+            return;
+        }
+
+        const API_CARRINHO = `http://localhost:3000/carrinhos/cliente/${clienteSalvo.id}`;
+        const resposta_c = await fetch(API_CARRINHO);
+        const carrinho = await resposta_c.json();
+
+        const API_ITENS_CARRINHO = `http://localhost:3000/itens-carrinho/`;
+        const resposta_ic = await fetch(API_ITENS_CARRINHO, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id_carrinho: carrinho.id,
+                id_produto: produto.id,
+                quantidade: 1
+            })
+        });
+
+        const itens = await resposta_ic.json();
+        console.log(itens);
+    });
+
     // Adiciona os elementos de informação dentro do bloco de informações.
     informacoes.append(titulo, descricao, preco, estoque);
 
     // Adiciona o visual e as informações no card.
-    card.append(visual, informacoes);
+    card.append(visual, informacoes, adicionarProduto);
 
     // Devolve o card pronto para ser inserido no carrossel.
     return card;

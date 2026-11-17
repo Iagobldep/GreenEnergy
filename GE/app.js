@@ -45,12 +45,13 @@ app.use((req, res) => {
     res.status(404).json({ msg: "Rota não encontrada" });
 });
 
-conexao.connect((erro) => {
+conexao.getConnection((erro, conexaoInicial) => {
     if (erro) {
         console.error(`Erro ao conectar ao banco de dados: ${erro.code || erro.message}`);
         process.exit(1);
     }
     console.log("Conectado ao banco de dados greenenergy")
+    conexaoInicial.release();
 
     const servidor = app.listen(PORTA, () => {
         console.log(`Servidor rodando em http://localhost:${PORTA}`);

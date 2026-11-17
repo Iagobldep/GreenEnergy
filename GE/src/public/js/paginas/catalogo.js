@@ -1,7 +1,11 @@
+import { configurarNavegacaoAutenticada } from "./navegacao.js";
+
 const lista = document.querySelector('#listaProdutos');
 const mensagem = document.querySelector('#mensagemProdutos');
 const API_PRODUTOS = 'http://localhost:3000/produtos';
 const API_CATEGORIAS = 'http://localhost:3000/categorias';
+
+const cliente = configurarNavegacaoAutenticada();
 
 function criarCard(produto) {
     const card = document.createElement('article');
@@ -18,6 +22,36 @@ function criarCard(produto) {
         currency: 'BRL'
     });
 
+    const adicionarProduto = document.createElement('button');
+    adicionarProduto.textContent = "Adicionar ao carrinho";
+
+    adicionarProduto.addEventListener("click", async () => {
+        if (!cliente) {
+            window.location.href = "../formularios/login.html"
+            return;
+        }
+
+        const API_CARRINHO = `http://localhost:3000/carrinhos/cliente/${cliente.id}`;
+        const resposta_car = await fetch(API_CARRINHO);
+        const carrinho = await resposta_car.json();
+
+        const API_ITENS_CARRINHO = `http://localhost:3000/itens-carrinho/`;
+        const resposta_ic = await fetch(API_ITENS_CARRINHO, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id_carrinho: carrinho.id,
+                id_produto: produto.id,
+                quantidade: 1
+            })
+        });
+
+        const itens = await resposta_ic.json();
+        console.log(itens);
+    });
+
     let visual = document.createElement('div');
     visual.className = 'product-visual';
     visual.textContent = '🌿';
@@ -28,7 +62,7 @@ function criarCard(produto) {
         visual.alt = produto.nome;
     }
 
-    card.append(visual, nome, descricao, preco);
+    card.append(visual, nome, descricao, preco, adicionarProduto);
     return card;
 }
 
@@ -42,7 +76,7 @@ async function carregarProdutos() {
     console.log(categorias);
 
     mensagem.textContent = "";
-    
+
     categorias.forEach(categoria => {
         const secao = document.createElement('section');
 

@@ -10,11 +10,11 @@ http:
     type: json
     data: |-
       {
-          "nome": "Pato de borracha (TAPORRA edition)",
-          "descricao": "Pato de borracha do tamanho do meu caralho",
-          "imagem_url": "https://imagenes.elpais.com/resizer/v2/https%3A%2F%2Fep01.epimg.net%2Felpais%2Fimagenes%2F2014%2F08%2F22%2Fvideos%2F1408718239_108049_1408721679_noticia_fotograma.jpg?auth=3a66495c09145832118155c2337ae69ae47eca690369e2573c2e810bf5f61dcb&width=1200",
-          "preco": 69.69,
-          "estoque": 69,
+          "nome": "Pato (Deluxe edition)",
+          "descricao": "Pato dos playboy",
+          "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHe0IP9lGdsZ-tU3KZ9sVxqEGJCcsRe8NI0HSBmjPweGg2GRS3dgOzibVu&s=10",
+          "preco": 999999.99,
+          "estoque": 1,
           "id_categoria": 6
       }
   auth: inherit

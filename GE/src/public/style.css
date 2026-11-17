@@ -36,6 +36,14 @@ body {
     gap: 35px;
 }
 
+.forms {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(197, 223, 165, 0.65);
+}
+
 .nav-links a {
     color: #e5eddf;
     text-decoration: none;
@@ -324,6 +332,11 @@ body {
     .nav-links .auth-link {
         padding: 8px 11px;
     }
+
+    .forms {
+        gap: 8px;
+        padding-left: 12px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -349,6 +362,11 @@ body {
 
     .nav-links .auth-link {
         padding: 7px 10px;
+    }
+
+    .forms {
+        gap: 7px;
+        padding-left: 10px;
     }
 
     .hero {

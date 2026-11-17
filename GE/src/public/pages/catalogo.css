@@ -33,19 +33,49 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 35px;
+    align-items: center;
+    gap: 24px;
+}
+
+.forms {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(197, 223, 165, 0.65);
 }
 
 .nav-links a {
     color: #e5eddf;
-    text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
 }
 
 .nav-links a:hover,
 .nav-links .active {
     color: #c5dfa5;
+}
+
+.nav-links .auth-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid #c5dfa5;
+    border-radius: 8px;
+}
+
+.nav-links .cadastro-link {
+    color: #29452e;
+    background: #c5dfa5;
+}
+
+.nav-links .cadastro-link:hover {
+    color: #29452e;
+    background: white;
 }
 
 main {
@@ -167,6 +197,11 @@ main > h1 {
     .nav-links {
         gap: 15px;
         font-size: 13px;
+    }
+
+    .forms {
+        gap: 8px;
+        padding-left: 12px;
     }
 
     main {

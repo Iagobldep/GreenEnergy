@@ -10,6 +10,11 @@ export function buscarPorId (id, callback) {
     conexao.query(sql, [id], callback);
 }
 
+export function buscarPorCliente(id, callback) {
+    const sql = "SELECT * FROM carrinho WHERE id_cliente = ?"
+    conexao.query(sql, [id], callback);
+}
+
 export function criar (idCliente, callback) {
     const sql = "INSERT INTO carrinho (id_cliente) VALUES (?)";
     conexao.query(sql, [idCliente], callback);

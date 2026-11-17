@@ -5,17 +5,17 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:3000/produtos/2
+  url: http://localhost:3000/produtos/25
   body:
     type: json
     data: |-
       {
-        "nome": "Lâmpada LED",
-        "descricao": "Ideal para iluminar suas ideias",
-        "imagem_url": "https://cdn.awsli.com.br/800x800/957/957734/produto/38326962/f68849628d.jpg",
-        "preco": 13.00,
-        "estoque": 30,
-        "id_categoria": 2
+          "nome": "Pato (Deluxe edition)",
+          "descricao": "Pato dos playboy",
+          "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHe0IP9lGdsZ-tU3KZ9sVxqEGJCcsRe8NI0HSBmjPweGg2GRS3dgOzibVu&s=10",
+          "preco": 99999.99,
+          "estoque": 1,
+          "id_categoria": 6
       }
   auth: inherit
 

@@ -29,6 +29,7 @@ export function listarPorCarrinho(req, res, next) {
                 id: linha.id_item,
                 id_produto: linha.id_produto,
                 nome_produto: linha.nome_produto,
+                imagem_url: linha.imagem_url,
                 quantidade: Number(linha.quantidade),
                 preco: Number(linha.preco),
                 subtotal: Number(linha.subtotal)

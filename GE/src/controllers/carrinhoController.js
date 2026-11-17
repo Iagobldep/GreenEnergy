@@ -18,6 +18,16 @@ export function buscarPorId(req, res, next) {
     });
 }
 
+export function buscarPorCliente(req, res, next) {
+    carrinhoModel.buscarPorCliente(req.id, (erro, resultado) => {
+        if(erro) return next(erro);
+        if (resultado.length === 0) {
+            return res.status(404).json({msg: "Carrinho não encontrado" })
+        }
+        return res.status(200).json(resultado[0]);
+    });
+}
+
 export function criar(req, res, next) {
     const { id_cliente } = req.body ?? {};
 

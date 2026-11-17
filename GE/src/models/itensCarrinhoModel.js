@@ -1,5 +1,55 @@
 import conexao from "../../db.js";
 
+function erroDaRegra(status, mensagem) {
+    const erro = new Error(mensagem);
+    erro.status = status;
+    return erro;
+}
+
+function validarDisponibilidade(idCarrinho, idProduto, quantidade, idItemIgnorado, callback) {
+    conexao.query("SELECT id FROM carrinho WHERE id = ?", [idCarrinho], (erro, carrinhos) => {
+        if (erro) return callback(erro);
+        if (carrinhos.length === 0) {
+            return callback(erroDaRegra(404, "Carrinho não encontrado"));
+        }
+
+        conexao.query("SELECT estoque FROM produto WHERE id = ?", [idProduto], (erroProduto, produtos) => {
+            if (erroProduto) return callback(erroProduto);
+            if (produtos.length === 0) {
+                return callback(erroDaRegra(404, "Produto não encontrado"));
+            }
+
+            let sql = `
+                SELECT id, quantidade
+                FROM item_carrinho
+                WHERE id_carrinho = ? AND id_produto = ?
+            `;
+            const parametros = [idCarrinho, idProduto];
+
+            if (idItemIgnorado !== undefined) {
+                sql += " AND id <> ?";
+                parametros.push(idItemIgnorado);
+            }
+
+            conexao.query(sql, parametros, (erroItens, itens) => {
+                if (erroItens) return callback(erroItens);
+
+                const quantidadeNoCarrinho = itens.reduce(
+                    (total, item) => total + Number(item.quantidade),
+                    0
+                );
+                const estoque = Number(produtos[0].estoque);
+
+                if (quantidadeNoCarrinho + quantidade > estoque) {
+                    return callback(erroDaRegra(409, "Estoque insuficiente para este produto"));
+                }
+
+                return callback(null, { itens });
+            });
+        });
+    });
+}
+
 export function listar(callback) {
     const sql = `
         SELECT item_carrinho.id, item_carrinho.id_carrinho, item_carrinho.id_produto,
@@ -31,6 +81,7 @@ export function listarPorCarrinho(idCarrinho, callback) {
                item_carrinho.id_produto,
                item_carrinho.quantidade,
                produto.nome AS nome_produto,
+               produto.imagem_url,
                produto.preco,
                produto.preco * item_carrinho.quantidade AS subtotal,
                COALESCE((
