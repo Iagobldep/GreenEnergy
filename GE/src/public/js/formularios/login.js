@@ -31,6 +31,7 @@ formulario.addEventListener("submit", async (evento) => {
             return;
         }
 
+        localStorage.setItem("cliente", JSON.stringify(resultado.cliente));
         mensagem.textContent = "Login realizado com sucesso!";
         mensagem.className = "sucesso";
 
@@ -43,6 +44,5 @@ formulario.addEventListener("submit", async (evento) => {
     } catch (erro) {
         mensagem.textContent = "Não foi possível conectar à API.";
         mensagem.className = "erro";
-        localStorage.setItem("cliente", JSON.stringify(resultado.cliente));
     }
 });
