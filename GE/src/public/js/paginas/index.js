@@ -7,6 +7,22 @@ const mensagemProdutos = document.querySelector("#mensagemProdutos");
 // Endereço da rota da API que retorna todos os produtos cadastrados.
 const API_PRODUTOS = "http://localhost:3000/produtos";
 
+const clienteSalvo = JSON.parse(localStorage.getItem("cliente"));
+const linkLogin = document.querySelector(".login-link");
+const linkCadastro = document.querySelector(".cadastro-link");
+
+if (clienteSalvo) {
+    linkLogin.textContent = "Sair";
+    linkLogin.href = "#";
+    linkCadastro.remove();
+
+    linkLogin.addEventListener("click", (event) => {
+        event.preventDefault();
+        localStorage.removeItem("cliente");
+        window.location.reload();
+    });
+}
+
 // Cria e devolve um card HTML preenchido com os dados de um produto.
 function criarCardProduto(produto) {
     // O article representa um card individual de produto.

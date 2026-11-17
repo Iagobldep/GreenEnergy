@@ -39,7 +39,7 @@ formulario.addEventListener("submit", async (evento) => {
 
         setTimeout(() => {
             window.location.href = "../index.html";
-        }, 1500);
+        }, 1000);
 
     } catch (erro) {
         mensagem.textContent = "Não foi possível conectar à API.";
