@@ -59,6 +59,56 @@
 
             <a class="voltar" href="carrinho.html">← Voltar para o carrinho</a>
         </section>
+
+        <section id="comprovante" class="comprovante" hidden>
+            <header class="comprovante-cabecalho">
+                <p>Green Energy</p>
+                <h1>Comprovante de compra</h1>
+                <span>Documento para conferência do pedido</span>
+            </header>
+
+            <dl class="dados-compra">
+                <div>
+                    <dt>Código da compra</dt>
+                    <dd id="codigoCompra"></dd>
+                </div>
+                <div>
+                    <dt>Nota fiscal</dt>
+                    <dd id="codigoNotaFiscal"></dd>
+                </div>
+                <div>
+                    <dt>Data</dt>
+                    <dd id="dataCompra"></dd>
+                </div>
+                <div>
+                    <dt>CPF</dt>
+                    <dd id="cpfComprovante"></dd>
+                </div>
+                <div>
+                    <dt>Pagamento</dt>
+                    <dd id="pagamentoComprovante"></dd>
+                </div>
+            </dl>
+
+            <div class="tabela-itens">
+                <div class="linha-item cabecalho-itens">
+                    <span>Produto</span>
+                    <span>Qtd.</span>
+                    <span>Preço unit.</span>
+                    <span>Subtotal</span>
+                </div>
+                <div id="itensComprovante"></div>
+            </div>
+
+            <p class="total-comprovante">
+                Total: <strong id="totalComprovante"></strong>
+            </p>
+            <p class="aviso-comprovante">Este comprovante não substitui documento fiscal oficial.</p>
+        </section>
+
+        <button id="salvarPdf" class="botao-pdf" type="button" hidden>
+            Salvar comprovante em PDF
+        </button>
     </main>
 </body>
 </html>

@@ -52,6 +52,8 @@ body {
 
 main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding: 55px 20px;
 }
@@ -160,8 +162,132 @@ button:disabled {
     text-align: center;
 }
 
+.botao-pdf {
+    max-width: 480px;
+    margin-top: 20px;
+}
+
+.comprovante {
+    width: 100%;
+    max-width: 720px;
+    padding: 40px;
+    border: 1px solid #dce4d7;
+    border-radius: 12px;
+    background: white;
+    color: #26382a;
+}
+
+.comprovante[hidden],
+.botao-pdf[hidden] {
+    display: none;
+}
+
+.comprovante-cabecalho {
+    padding-bottom: 22px;
+    border-bottom: 2px solid #dce9cf;
+    text-align: center;
+}
+
+.comprovante-cabecalho > p {
+    color: var(--cor-principal);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.comprovante-cabecalho h1 {
+    margin: 8px 0;
+}
+
+.comprovante-cabecalho span,
+.aviso-comprovante {
+    color: #778274;
+    font-size: 13px;
+}
+
+.dados-compra {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    padding: 24px 0;
+}
+
+.dados-compra dt {
+    margin-bottom: 5px;
+    color: #778274;
+    font-size: 13px;
+}
+
+.dados-compra dd {
+    font-weight: 700;
+}
+
+.linha-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 55px 110px 110px;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e6ebdf;
+    font-size: 14px;
+}
+
+.cabecalho-itens {
+    color: #52674d;
+    font-weight: 700;
+}
+
+.total-comprovante {
+    margin-top: 22px;
+    color: var(--cor-principal);
+    font-size: 20px;
+    text-align: right;
+}
+
+.aviso-comprovante {
+    margin-top: 30px;
+    text-align: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .checkout-card {
         animation: none;
+    }
+}
+
+@media print {
+    @page {
+        margin: 18mm;
+    }
+
+    body {
+        min-height: auto;
+        background: white;
+        color: #26382a;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .header,
+    .checkout-card,
+    .botao-pdf {
+        display: none !important;
+    }
+
+    main {
+        display: block;
+        padding: 0;
+    }
+
+    .comprovante,
+    .comprovante[hidden] {
+        display: block !important;
+        width: 100%;
+        max-width: none;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        animation: none;
+        box-shadow: none;
     }
 }

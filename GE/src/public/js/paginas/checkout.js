@@ -7,6 +7,8 @@ const tipoPagamento = document.querySelector("#tipoPagamento");
 const totalCompra = document.querySelector("#totalCompra");
 const mensagem = document.querySelector("#mensagemCheckout");
 const confirmarCompra = document.querySelector("#confirmarCompra");
+const comprovante = document.querySelector("#comprovante");
+const salvarPdf = document.querySelector("#salvarPdf");
 
 let carrinho;
 
@@ -21,6 +23,56 @@ function formatarCpf(valor) {
 function mostrarErro(texto) {
     mensagem.textContent = texto;
     mensagem.className = "erro";
+}
+
+function formatarMoeda(valor) {
+    return Number(valor).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+}
+
+function preencherComprovante(compra) {
+    const pagamento = {
+        pix: "PIX",
+        cartao: "Cartão",
+        boleto: "Boleto"
+    };
+
+    document.querySelector("#codigoCompra").textContent = compra.codigo;
+    document.querySelector("#codigoNotaFiscal").textContent = compra.codigo_nota_fiscal;
+    document.querySelector("#dataCompra").textContent = new Date().toLocaleString("pt-BR");
+    document.querySelector("#cpfComprovante").textContent = formatarCpf(compra.cpf);
+    document.querySelector("#pagamentoComprovante").textContent =
+        pagamento[compra.tipo_pagamento] || compra.tipo_pagamento;
+    document.querySelector("#totalComprovante").textContent = formatarMoeda(compra.valor_total);
+
+    const itens = document.querySelector("#itensComprovante");
+    itens.replaceChildren();
+
+    compra.itens.forEach((item) => {
+        const linha = document.createElement("div");
+        linha.className = "linha-item";
+
+        const nome = document.createElement("span");
+        nome.textContent = item.nome;
+
+        const quantidade = document.createElement("span");
+        quantidade.textContent = String(item.quantidade);
+
+        const preco = document.createElement("span");
+        preco.textContent = formatarMoeda(item.preco);
+
+        const subtotal = document.createElement("span");
+        subtotal.textContent = formatarMoeda(item.preco * item.quantidade);
+
+        linha.append(nome, quantidade, preco, subtotal);
+        itens.append(linha);
+    });
+
+    comprovante.hidden = false;
+    salvarPdf.hidden = false;
+    document.title = `${compra.codigo}-comprovante`;
 }
 
 cpf.addEventListener("input", () => {
@@ -87,11 +139,16 @@ formulario.addEventListener("submit", async (evento) => {
         mensagem.textContent =
             `Compra ${resultado.compra.codigo} finalizada. Nota fiscal ${resultado.compra.codigo_nota_fiscal}.`;
         mensagem.className = "sucesso";
+        preencherComprovante(resultado.compra);
         formulario.reset();
     } catch (erro) {
         mostrarErro(erro.message || "Não foi possível finalizar a compra");
         confirmarCompra.disabled = false;
     }
+});
+
+salvarPdf.addEventListener("click", () => {
+    window.print();
 });
 
 carregarResumo();

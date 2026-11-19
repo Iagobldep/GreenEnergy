@@ -67,7 +67,9 @@ export function finalizar(req, res, next) {
             compra: {
                 ...compra,
                 codigo: formatarCodigo("COMP", compra.id),
-                codigo_nota_fiscal: formatarCodigo("NF", compra.id_nota_fiscal)
+                codigo_nota_fiscal: formatarCodigo("NF", compra.id_nota_fiscal),
+                cpf: cpfNormalizado,
+                tipo_pagamento: pagamentoNormalizado
             }
         });
     });
