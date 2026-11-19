@@ -6,8 +6,8 @@
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f5f7ef;
-    color: #344b35;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
 }
 
 .container {
@@ -87,7 +87,7 @@ h1 {
 button {
     width: 100%;
     padding: 14px;
-    background: #36543b;
+    background: var(--cor-principal);
     color: white;
     border: none;
     border-radius: 7px;
@@ -98,7 +98,7 @@ button {
 }
 
 button:hover {
-    background: #64864e;
+    background: var(--cor-principal-escura);
     transform: scale(1.02);
 }
 

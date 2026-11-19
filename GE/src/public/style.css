@@ -6,12 +6,12 @@
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f5f7ef;
-    color: #344b35;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
 }
 
 .header {
-    background: #36543b;
+    background: var(--cor-principal);
     padding: 20px 8%;
 }
 
@@ -88,7 +88,7 @@ body {
 
 .nav-links .cadastro-link {
     color: #29452e;
-    background: #c5dfa5;
+    background: var(--cor-destaque);
     transition: transform 0.2s ease-out;
 }
 
@@ -117,7 +117,7 @@ body {
     place-items: center;
     border: 2px solid #36543b;
     border-radius: 999px;
-    background: #c5dfa5;
+    background: var(--cor-destaque);
     color: #29452e;
     font-size: 11px;
     font-weight: 700;
@@ -251,6 +251,7 @@ body {
 }
 
 .product-card {
+    animation: entrada-suave 0.45s ease-out both;
     background: white;
     min-width: 260px;
     max-width: 260px;
@@ -258,6 +259,12 @@ body {
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(47, 75, 43, 0.10);
     transition: 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .product-card {
+        animation: none;
+    }
 }
 
 .product-card:hover {

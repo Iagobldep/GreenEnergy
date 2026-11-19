@@ -201,7 +201,7 @@ finalizarCompra.addEventListener('click', async () => {
         }
 
         mensagemCarrinho.textContent =
-            `Compra #${finalizada.compra.id} finalizada. Nota fiscal #${finalizada.compra.id_nota_fiscal}.`;
+            `Compra ${finalizada.compra.codigo} finalizada. Nota fiscal ${finalizada.compra.codigo_nota_fiscal}.`;
         itensCarrinho.replaceChildren();
         compraConcluida = true;
     } catch (erro) {

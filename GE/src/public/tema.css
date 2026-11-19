@@ -1,0 +1,19 @@
+:root {
+    --cor-principal: #36543b;
+    --cor-principal-escura: #29452e;
+    --cor-fundo: #f5f7ef;
+    --cor-texto: #344b35;
+    --cor-destaque: #c5dfa5;
+}
+
+@keyframes entrada-suave {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

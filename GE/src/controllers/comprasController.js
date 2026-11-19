@@ -1,6 +1,10 @@
 import * as comprasModel from "../models/comprasModel.js";
 import { dataHoraValida, inteiroPositivo, textoValido, valorMonetarioValido } from "../utils/validacoes.js";
 
+function formatarCodigo(prefixo, id) {
+    return `${prefixo}-${String(id).padStart(6, "0")}`;
+}
+
 export function listar(req, res, next) {
     comprasModel.listar((erro, resultado) => {
         if (erro) return next(erro);
@@ -32,7 +36,11 @@ export function finalizar(req, res, next) {
 
         return res.status(201).json({
             msg: "Compra finalizada com sucesso",
-            compra
+            compra: {
+                ...compra,
+                codigo: formatarCodigo("COMP", compra.id),
+                codigo_nota_fiscal: formatarCodigo("NF", compra.id_nota_fiscal)
+            }
         });
     });
 }
