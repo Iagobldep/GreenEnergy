@@ -28,7 +28,12 @@
 
                 <div class="campo">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" placeholder="Crie uma senha" required>
+                    <input type="password" id="senha" placeholder="Crie uma senha" autocomplete="new-password" required>
+                </div>
+
+                <div class="campo">
+                    <label for="confirmarSenha">Confirmar senha</label>
+                    <input type="password" id="confirmarSenha" placeholder="Digite a senha novamente" autocomplete="new-password" required>
                 </div>
 
                 <div class="campo">
@@ -41,7 +46,7 @@
                     <input type="tel" id="telefone" placeholder="Digite seu telefone" required>
                 </div>
 
-                <p id="mensagemCadastro"></p>
+                <p id="mensagemCadastro" aria-live="polite"></p>
 
                 <button type="submit">Criar minha conta</button>
             </form>

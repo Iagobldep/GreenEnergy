@@ -5,17 +5,17 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:3000/produtos/15
+  url: http://localhost:3000/produtos/40
   body:
     type: json
     data: |-
       {
-          "nome": "Sistema de Armazenamento Residencial 5kWh",
-          "descricao": "Sistema de baterias para armazenamento de energia gerada por painéis solares, permitindo utilizar a eletricidade armazenada em períodos sem geração solar.",
-          "imagem_url": "https://image.made-in-china.com/202f0j00CkqWpoicbzMR/OEM-51-2V100ah-5kw-10kw-15kw-16kwh-30kw-Home-Energy-Storage-System.webp",
-          "preco": 12999.90,
-          "estoque": 5,
-          "id_categoria": 3
+          "nome": "Kit de Energia Solar para Pequenas Propriedades",
+          "descricao": "Sistema de geração e armazenamento de energia solar desenvolvido para pequenas propriedades rurais, incluindo painéis fotovoltaicos, inversor, baterias e controlador de carga.",
+          "imagem_url": "https://http2.mlstatic.com/D_NQ_NP_733757-MLB112507471804_062026-O-kit-energia-solar-monofasico-mercearia-livre-mini-stralink.webp",
+          "preco": 14999.90,
+          "estoque": 6,
+          "id_categoria": 8
       }
   auth: inherit
 

@@ -1,4 +1,4 @@
-import { configurarNavegacaoAutenticada } from "./navegacao.js";
+import { atualizarContadorCarrinho, configurarNavegacaoAutenticada } from "./navegacao.js";
 
 // Procura no HTML a área onde os cards dos produtos serão colocados.
 const carousel = document.querySelector("#carousel");
@@ -82,7 +82,10 @@ function criarCardProduto(produto) {
         });
 
         const itens = await resposta_ic.json();
-        console.log(itens);
+        if (!resposta_ic.ok) {
+            throw new Error(itens.msg || "Não foi possível adicionar o produto ao carrinho");
+        }
+        await atualizarContadorCarrinho(clienteSalvo);
     });
 
     // Adiciona os elementos de informação dentro do bloco de informações.

@@ -20,6 +20,11 @@ export function criar (idCliente, callback) {
     conexao.query(sql, [idCliente], callback);
 }
 
+export function criarSeNaoExistir (idCliente, callback) {
+    const sql = "INSERT INTO carrinho (id_cliente) VALUES (?) ON DUPLICATE KEY UPDATE id_cliente = VALUES(id_cliente)";
+    conexao.query(sql, [idCliente], callback);
+}
+
 export function atualizar (id, idCliente, callback) {
     const sql = "UPDATE carrinho SET id_cliente = ? WHERE id = ?";
     conexao.query(sql, [idCliente, id], callback);

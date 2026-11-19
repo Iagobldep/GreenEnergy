@@ -1,4 +1,4 @@
-import { configurarNavegacaoAutenticada } from "./navegacao.js";
+import { atualizarContadorCarrinho, configurarNavegacaoAutenticada } from "./navegacao.js";
 
 const lista = document.querySelector('#listaProdutos');
 const mensagem = document.querySelector('#mensagemProdutos');
@@ -49,7 +49,10 @@ function criarCard(produto) {
         });
 
         const itens = await resposta_ic.json();
-        console.log(itens);
+        if (!resposta_ic.ok) {
+            throw new Error(itens.msg || "Não foi possível adicionar o produto ao carrinho");
+        }
+        await atualizarContadorCarrinho(cliente);
     });
 
     let visual = document.createElement('div');

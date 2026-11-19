@@ -1,8 +1,24 @@
 import * as clientesModel from "../models/clientesModel.js";
+import * as carrinhoModel from "../models/carrinhoModel.js";
 import { hashSenha, senhaHasheada, textoValido, verificarSenha } from "../utils/validacoes.js";
 
 function emailValido(email) {
     return textoValido(email, 150) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+function responderLogin(cliente, res, next) {
+    carrinhoModel.criarSeNaoExistir(cliente.id, (erro) => {
+        if (erro) return next(erro);
+
+        return res.status(200).json({
+            msg: "Login realizado com sucesso",
+            cliente: {
+                id: cliente.id,
+                nome: cliente.nome,
+                email: cliente.email
+            }
+        });
+    });
 }
 
 export function listar(req, res, next) {
@@ -81,26 +97,12 @@ export function login(req, res, next) {
                 const senhaHash = await hashSenha(senha);
                 clientesModel.atualizarSenha(cliente.id, senhaHash, (erroAtualizacao) => {
                     if (erroAtualizacao) return next(erroAtualizacao);
-                    return res.status(200).json({
-                        msg: "Login realizado com sucesso",
-                        cliente: {
-                            id: cliente.id,
-                            nome: cliente.nome,
-                            email: cliente.email,
-                        }
-                    });
+                    return responderLogin(cliente, res, next);
                 });
                 return;
             }
 
-            return res.status(200).json({
-                msg: "Login realizado com sucesso",
-                cliente: {
-                    id: cliente.id,
-                    nome: cliente.nome,
-                    email: cliente.email
-                }
-            });
+            return responderLogin(cliente, res, next);
         } catch (erroVerificacao) {
             return next(erroVerificacao);
         }

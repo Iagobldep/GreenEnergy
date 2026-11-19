@@ -2,12 +2,20 @@ const formulario = document.querySelector("#formCadastro");
 const nome = document.querySelector("#nome");
 const email = document.querySelector("#email");
 const senha = document.querySelector("#senha");
+const confirmarSenha = document.querySelector("#confirmarSenha");
 const endereco = document.querySelector("#endereco");
 const telefone = document.querySelector("#telefone");
 const mensagem = document.querySelector("#mensagemCadastro");
 
 formulario.addEventListener("submit", async (evento) => {
     evento.preventDefault();
+
+    if (senha.value !== confirmarSenha.value) {
+        mensagem.textContent = "As senhas não coincidem.";
+        mensagem.className = "erro";
+        confirmarSenha.focus();
+        return;
+    }
 
     const dados = {
         nome: nome.value.trim(),
