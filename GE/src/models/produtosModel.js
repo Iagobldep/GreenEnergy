@@ -16,8 +16,19 @@ export function criar (dados, callback) {
 }
 
 export function atualizar (id, dados, callback) {
-    const sql = "UPDATE produto SET nome = ?, descricao = ?, imagem_url = ?, preco = ?, estoque = ?, id_categoria = ? WHERE id = ?";
-    conexao.query(sql, [dados.nome, dados.descricao, dados.imagem_url, dados.preco, dados.estoque, dados.id_categoria, id], callback);
+    const campos = ["nome = ?", "descricao = ?"];
+    const valores = [dados.nome, dados.descricao];
+
+    if (dados.imagem_url !== undefined) {
+        campos.push("imagem_url = ?");
+        valores.push(dados.imagem_url);
+    }
+
+    campos.push("preco = ?", "estoque = ?", "id_categoria = ?");
+    valores.push(dados.preco, dados.estoque, dados.id_categoria, id);
+
+    const sql = `UPDATE produto SET ${campos.join(", ")} WHERE id = ?`;
+    conexao.query(sql, valores, callback);
 }
 
 export function deletar (id, callback) {

@@ -10,12 +10,12 @@ http:
     type: json
     data: |-
       {
-          "nome": "Pato (Deluxe edition)",
-          "descricao": "Pato dos playboy",
-          "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHe0IP9lGdsZ-tU3KZ9sVxqEGJCcsRe8NI0HSBmjPweGg2GRS3dgOzibVu&s=10",
-          "preco": 999999.99,
-          "estoque": 1,
-          "id_categoria": 6
+          "nome": "Kit de Energia Solar para Pequenas Propriedades",
+          "descricao": "Sistema de geração e armazenamento de energia solar desenvolvido para pequenas propriedades rurais, incluindo painéis fotovoltaicos, inversor, baterias e controlador de carga.",
+          "imagem_url": "https://placehold.co/600x400?text=Kit+Solar+Rural",
+          "preco": 14999.90,
+          "estoque": 6,
+          "id_categoria": 8
       }
   auth: inherit
 

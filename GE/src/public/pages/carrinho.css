@@ -30,6 +30,11 @@ body {
     font-weight: bold;
     text-decoration: none;
     white-space: nowrap;
+    transition: transform 0.2s ease-out;
+}
+
+.logo:hover {
+    transform: scale(1.02);
 }
 
 .nav-links {
@@ -51,7 +56,11 @@ body {
     font-weight: 600;
     text-decoration: none;
     white-space: nowrap;
-    transition: color 0.2s, background 0.2s;
+    transition: color 0.2s, background 0.2s, transform 0.2s ease-out;
+}
+
+.nav-links a:hover {
+    transform: scale(1.07);
 }
 
 .nav-links a:hover,

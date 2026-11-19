@@ -45,13 +45,32 @@ export function criar(req, res, next) {
 }
 
 export function atualizar(req, res, next) {
-    const { nome, descricao, preco, estoque, id_categoria } = req.body ?? {};
+    const { nome, descricao, imagem_url, preco, estoque, id_categoria } = req.body ?? {};
 
     if (!textoValido(nome, 150)) {
         return res.status(400).json({ msg: "Insira um nome válido para o produto" })
     }
 
-    produtosModel.atualizar(req.id, { nome: nome.trim(), descricao: descricao.trim(), preco: preco, estoque: estoque, id_categoria: id_categoria }, (erro, resultado) => {
+    if (imagem_url !== undefined &&
+        imagem_url !== null &&
+        (typeof imagem_url !== "string" || imagem_url.trim().length > 500)) {
+        return res.status(400).json({ msg: "A URL da imagem deve ter até 500 caracteres" });
+    }
+
+    const dados = {
+        nome: nome.trim(),
+        descricao,
+        imagem_url: imagem_url === undefined
+            ? undefined
+            : typeof imagem_url === "string" && imagem_url.trim()
+                ? imagem_url.trim()
+                : null,
+        preco,
+        estoque,
+        id_categoria
+    };
+
+    produtosModel.atualizar(req.id, dados, (erro, resultado) => {
         if (erro) return next(erro);
 
         if (resultado.affectedRows > 0) {
