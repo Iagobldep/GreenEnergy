@@ -32,7 +32,7 @@ function erroDaRegra(status, message) {
     return erro;
 }
 
-export async function finalizar(idCliente, callback) {
+export async function finalizar(idCliente, cpf, tipoPagamento, callback) {
     let banco;
     let transacaoIniciada = false;
     let erroFinal;
@@ -138,8 +138,8 @@ export async function finalizar(idCliente, callback) {
         }
 
         const [resultadoNota] = await banco.query(
-            "INSERT INTO nota_fiscal (id_compra, valor_total, estado) VALUES (?, ?, 'emitida')",
-            [idCompra, total]
+            "INSERT INTO nota_fiscal (id_compra, valor_total, estado, cpf, tipo_pagamento) VALUES (?, ?, 'emitida', ?, ?)",
+            [idCompra, total, cpf, tipoPagamento]
         );
 
         await banco.query(

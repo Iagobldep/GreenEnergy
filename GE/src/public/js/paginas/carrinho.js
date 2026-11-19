@@ -179,37 +179,7 @@ finalizarCompra.addEventListener('click', async () => {
         return;
     }
 
-    finalizarCompra.disabled = true;
-    mensagemCarrinho.textContent = "Finalizando compra...";
-    let compraConcluida = false;
-
-    try {
-        const resposta_fc = await fetch("http://localhost:3000/compras/finalizar", {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                id_cliente: clienteSalvo.id
-            })
-        });
-        const finalizada = await resposta_fc.json();
-
-        if (!resposta_fc.ok) {
-            mensagemCarrinho.textContent = finalizada.msg || "Erro ao finalizar compra";
-            return;
-        }
-
-        mensagemCarrinho.textContent =
-            `Compra ${finalizada.compra.codigo} finalizada. Nota fiscal ${finalizada.compra.codigo_nota_fiscal}.`;
-        itensCarrinho.replaceChildren();
-        compraConcluida = true;
-    } catch (erro) {
-        console.error("Erro ao finalizar a compra:", erro);
-        mensagemCarrinho.textContent = "Não foi possível finalizar a compra. Tente novamente.";
-    } finally {
-        finalizarCompra.disabled = compraConcluida;
-    }
+    window.location.href = "checkout.html";
 });
 
 carregarCarrinho();

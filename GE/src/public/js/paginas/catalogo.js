@@ -22,6 +22,10 @@ function criarCard(produto) {
         currency: 'BRL'
     });
 
+    const estoque = document.createElement('p');
+    estoque.className = 'product-stock';
+    estoque.textContent = `Disponíveis: ${Number(produto.estoque)}`;
+
     const adicionarProduto = document.createElement('button');
     adicionarProduto.textContent = "Adicionar ao carrinho";
 
@@ -65,7 +69,7 @@ function criarCard(produto) {
         visual.alt = produto.nome;
     }
 
-    card.append(visual, nome, descricao, preco, adicionarProduto);
+    card.append(visual, nome, descricao, preco, estoque, adicionarProduto);
     return card;
 }
 

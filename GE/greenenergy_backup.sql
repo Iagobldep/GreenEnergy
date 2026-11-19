@@ -1,4 +1,4 @@
-/*M!999999\- enable the sandbox mode */ 
+﻿/*M!999999\- enable the sandbox mode */
 -- MariaDB dump 10.19-12.3.1-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: greenenergy
@@ -143,7 +143,7 @@ CREATE TABLE `compra` (
   PRIMARY KEY (`id`),
   KEY `fk_compra_cliente` (`id_cliente`),
   CONSTRAINT `fk_compra_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +177,7 @@ CREATE TABLE `item_carrinho` (
   KEY `fk_item_carrinho_produto` (`id_produto`),
   CONSTRAINT `fk_item_carrinho` FOREIGN KEY (`id_carrinho`) REFERENCES `carrinho` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_item_carrinho_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,6 +187,8 @@ CREATE TABLE `item_carrinho` (
 SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `item_carrinho` WRITE;
 /*!40000 ALTER TABLE `item_carrinho` DISABLE KEYS */;
+INSERT INTO `item_carrinho` VALUES
+(9,3,3,2);
 /*!40000 ALTER TABLE `item_carrinho` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -210,7 +212,7 @@ CREATE TABLE `item_compra` (
   KEY `fk_item_produto` (`id_produto`),
   CONSTRAINT `fk_item_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`),
   CONSTRAINT `fk_itemcompra` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,6 +243,8 @@ CREATE TABLE `nota_fiscal` (
   `data_emissao` datetime DEFAULT current_timestamp(),
   `valor_total` decimal(10,2) NOT NULL,
   `estado` varchar(30) NOT NULL,
+  `cpf` varchar(11) DEFAULT NULL,
+  `tipo_pagamento` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_notafiscal_compra` (`id_compra`),
   CONSTRAINT `fk_notafiscal_compra` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id`) ON DELETE CASCADE
@@ -255,7 +259,7 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `nota_fiscal` WRITE;
 /*!40000 ALTER TABLE `nota_fiscal` DISABLE KEYS */;
 INSERT INTO `nota_fiscal` VALUES
-(1,1,'2026-11-19 10:44:51',19099.60,'emitida');
+(1,1,'2026-11-19 10:44:51',19099.60,'emitida',NULL,NULL);
 /*!40000 ALTER TABLE `nota_fiscal` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -334,6 +338,14 @@ INSERT INTO `produto` VALUES
 UNLOCK TABLES;
 COMMIT;
 SET AUTOCOMMIT=@OLD_AUTOCOMMIT;
+
+--
+-- Dumping events for database 'greenenergy'
+--
+
+--
+-- Dumping routines for database 'greenenergy'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -344,4 +356,4 @@ SET AUTOCOMMIT=@OLD_AUTOCOMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2026-11-19 13:25:07
+-- Dump completed on 2026-11-19 13:39:43

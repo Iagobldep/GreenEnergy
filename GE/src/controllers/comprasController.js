@@ -5,6 +5,27 @@ function formatarCodigo(prefixo, id) {
     return `${prefixo}-${String(id).padStart(6, "0")}`;
 }
 
+function cpfValido(cpf) {
+    const digitos = String(cpf).replace(/\D/g, "");
+    if (digitos.length !== 11 || /^(\d)\1{10}$/.test(digitos)) return false;
+
+    let soma = 0;
+    for (let indice = 0; indice < 9; indice++) {
+        soma += Number(digitos[indice]) * (10 - indice);
+    }
+    let primeiroDigito = (soma * 10) % 11;
+    if (primeiroDigito === 10) primeiroDigito = 0;
+    if (primeiroDigito !== Number(digitos[9])) return false;
+
+    soma = 0;
+    for (let indice = 0; indice < 10; indice++) {
+        soma += Number(digitos[indice]) * (11 - indice);
+    }
+    let segundoDigito = (soma * 10) % 11;
+    if (segundoDigito === 10) segundoDigito = 0;
+    return segundoDigito === Number(digitos[10]);
+}
+
 export function listar(req, res, next) {
     comprasModel.listar((erro, resultado) => {
         if (erro) return next(erro);
@@ -21,12 +42,19 @@ export function buscarPorId(req, res, next) {
 }
 
 export function finalizar(req, res, next) {
-    const { id_cliente } = req.body ?? {};
-    if (!inteiroPositivo(id_cliente)) {
-        return res.status(400).json({ msg: "Informe um id_cliente inteiro positivo" });
+    const { id_cliente, cpf, tipo_pagamento } = req.body ?? {};
+    const pagamentosAceitos = ["pix", "cartao", "boleto"];
+    const cpfNormalizado = String(cpf ?? "").replace(/\D/g, "");
+    const pagamentoNormalizado = String(tipo_pagamento ?? "").trim().toLowerCase();
+
+    if (!inteiroPositivo(id_cliente) || !cpfValido(cpfNormalizado)) {
+        return res.status(400).json({ msg: "Informe um CPF válido" });
+    }
+    if (!pagamentosAceitos.includes(pagamentoNormalizado)) {
+        return res.status(400).json({ msg: "Informe um tipo de pagamento válido" });
     }
 
-    comprasModel.finalizar(id_cliente, (erro, compra) => {
+    comprasModel.finalizar(id_cliente, cpfNormalizado, pagamentoNormalizado, (erro, compra) => {
         if (erro) {
             if (Number.isInteger(erro.status) && erro.status >= 400 && erro.status < 500) {
                 return res.status(erro.status).json({ msg: erro.message });

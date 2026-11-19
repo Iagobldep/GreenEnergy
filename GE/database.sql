@@ -80,6 +80,8 @@ CREATE TABLE IF NOT EXISTS nota_fiscal (
     data_emissao DATETIME DEFAULT CURRENT_TIMESTAMP,
     valor_total DECIMAL(10,2) NOT NULL,
     estado VARCHAR(30) NOT NULL,
+    cpf VARCHAR(11),
+    tipo_pagamento VARCHAR(20),
     CONSTRAINT fk_notafiscal_compra
         FOREIGN KEY (id_compra)
         REFERENCES compra(id) ON DELETE CASCADE
