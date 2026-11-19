@@ -5,17 +5,17 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:3000/produtos/40
+  url: http://localhost:3000/produtos/15
   body:
     type: json
     data: |-
       {
-          "nome": "Kit de Energia Solar para Pequenas Propriedades",
-          "descricao": "Sistema de geração e armazenamento de energia solar desenvolvido para pequenas propriedades rurais, incluindo painéis fotovoltaicos, inversor, baterias e controlador de carga.",
-          "imagem_url": "https://placehold.co/600x400?text=Kit+Solar+Rural",
-          "preco": 14999.90,
-          "estoque": 6,
-          "id_categoria": 8
+          "nome": "Sistema de Armazenamento Residencial 5kWh",
+          "descricao": "Sistema de baterias para armazenamento de energia gerada por painéis solares, permitindo utilizar a eletricidade armazenada em períodos sem geração solar.",
+          "imagem_url": "https://image.made-in-china.com/202f0j00CkqWpoicbzMR/OEM-51-2V100ah-5kw-10kw-15kw-16kwh-30kw-Home-Energy-Storage-System.webp",
+          "preco": 12999.90,
+          "estoque": 5,
+          "id_categoria": 3
       }
   auth: inherit
 
